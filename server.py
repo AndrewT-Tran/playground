@@ -1,18 +1,21 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
+
+
+
 @app.route("/")
-def index():
-    return redirect("/play")
-
-
 @app.route("/play")
 def play():
-    return render_template("index.html", num=3, color="blue")
+    return render_template("index.html", num=4, color="blue")
 
-
+@app.route("/<color>")
+def justcolor(color):
+    return render_template("index.html", num=5,color=color)
+#just for fun, should reroute to just change the color
+@app.route('<num>')
 @app.route("/play/<num>")
 def num_squares(num):
     return render_template("index.html", num=int(num), color="blue")
