@@ -15,7 +15,7 @@ def play():
 def justcolor(color):
     return render_template("index.html", num=5,color=color)
 #just for fun, should reroute to just change the color
-@app.route('<num>')
+@app.route('/<num>')
 @app.route("/play/<num>")
 def num_squares(num):
     return render_template("index.html", num=int(num), color="blue")
